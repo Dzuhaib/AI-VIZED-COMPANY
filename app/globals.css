@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0a0e1a;
+  --teal: #00d4ff;
+  --coral: #ff6b35;
+  --soft-white: #f0f4ff;
+  --slate: #1e2a3a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: var(--navy);
+  color: var(--soft-white);
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Lenis smooth scroll ─────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ─── Scrollbar ───────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--teal), var(--coral));
+  border-radius: 2px;
+}
+
+/* ─── Selection ───────────────────────────────── */
+::selection {
+  background: rgba(0, 212, 255, 0.2);
+  color: var(--teal);
+}
+
+/* ─── Focus ───────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Organic Blobs ───────────────────────────── */
+/* Used as ambient background, feels warm & handcrafted not robotic */
+.blob {
+  position: absolute;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  filter: blur(80px);
+  pointer-events: none;
+  animation: blob-float 12s ease-in-out infinite;
+}
+.blob-teal {
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.18) 0%, transparent 70%);
+}
+.blob-coral {
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.14) 0%, transparent 70%);
+  animation-delay: -4s;
+  animation-duration: 16s;
+  border-radius: 30% 70% 60% 40% / 40% 60% 30% 70%;
+}
+.blob-mid {
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.07) 0%, rgba(255, 107, 53, 0.05) 50%, transparent 70%);
+  animation-delay: -8s;
+  animation-duration: 20s;
+}
+
+@keyframes blob-float {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    border-radius: 30% 70% 60% 40% / 50% 60% 30% 60%;
+    transform: translate(2%, 3%) scale(1.04);
+  }
+  66% {
+    border-radius: 50% 50% 40% 60% / 30% 50% 70% 40%;
+    transform: translate(-2%, -2%) scale(0.97);
+  }
+}
+
+/* ─── Gradient text ───────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #00d4ff 0%, #f0f4ff 45%, #ff6b35 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-teal {
+  background: linear-gradient(120deg, #00d4ff 0%, #88eeff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-warm {
+  background: linear-gradient(120deg, #ff6b35 0%, #ffaa80 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Cards ───────────────────────────────────── */
+.glass-card {
+  background: rgba(20, 30, 45, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.glass-card:hover {
+  border-color: rgba(0, 212, 255, 0.15);
+}
+
+/* ─── Buttons ─────────────────────────────────── */
+.btn-primary {
+  @apply relative inline-flex items-center gap-2 px-6 py-3 font-heading font-semibold rounded-xl overflow-hidden transition-all duration-300;
+  background: linear-gradient(135deg, #00d4ff 0%, #00aacc 100%);
+  color: #0a0e1a;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #33ddff, #00d4ff);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-primary:hover::after { opacity: 1; }
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 212, 255, 0.35);
+}
+
+.btn-secondary {
+  @apply relative inline-flex items-center gap-2 px-6 py-3 font-heading font-semibold rounded-xl border transition-all duration-300;
+  border-color: rgba(240, 244, 255, 0.12);
+  color: var(--soft-white);
+  background: rgba(255, 255, 255, 0.04);
+}
+.btn-secondary:hover {
+  border-color: rgba(0, 212, 255, 0.4);
+  background: rgba(0, 212, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+/* ─── Tags ────────────────────────────────────── */
+.tag {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-body font-medium;
+  background: rgba(0, 212, 255, 0.08);
+  color: var(--teal);
+  border: 1px solid rgba(0, 212, 255, 0.18);
+}
+.tag-coral {
+  background: rgba(255, 107, 53, 0.08);
+  color: var(--coral);
+  border-color: rgba(255, 107, 53, 0.18);
+}
+
+/* ─── Divider ─────────────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+}
+
+/* ─── Animated underline ──────────────────────── */
+.animated-underline { position: relative; }
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--teal);
+  transition: width 0.3s ease;
+}
+.animated-underline:hover::after { width: 100%; }
+
+/* ─── Page transition overlay ─────────────────── */
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-transition-panel {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0a0e1a 0%, #0d1520 50%, #0a0e1a 100%);
+  transform: scaleY(0);
+  transform-origin: bottom center;
+}
+
+/* ─── Form inputs ─────────────────────────────── */
+.form-input {
+  @apply w-full rounded-xl px-4 py-3 text-soft-white placeholder-soft-white/25 transition-all duration-300;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+.form-input:focus {
+  border-color: rgba(0, 212, 255, 0.5);
+  background: rgba(0, 212, 255, 0.04);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.08);
+}
+
+/* ─── Floating particle dots ──────────────────── */
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--teal);
+  opacity: 0.4;
+  animation: particle-float 6s ease-in-out infinite;
+}
+@keyframes particle-float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+  50% { transform: translateY(-20px) scale(1.2); opacity: 0.7; }
+}
+
+/* ─── Number counter ──────────────────────────── */
+.counter-value { font-variant-numeric: tabular-nums; }
+
+/* ─── Reveal classes (GSAP will override) ─────── */
+.reveal-section { will-change: transform, opacity; }
+.reveal-item { will-change: transform, opacity; }
+
+/* ─── Reduced motion ──────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .blob { animation: none !important; }
+  .particle { animation: none !important; }
+}
