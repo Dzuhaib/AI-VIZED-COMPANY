@@ -62,7 +62,7 @@ function WorldMap() {
     })
     anime({
       targets: paths,
-      strokeDashoffset: [anime.stagger([80, 0]), 0],
+      strokeDashoffset: 0,
       duration: 1800,
       delay: anime.stagger(200, { start: 400 }),
       easing: 'easeInOutQuad',
