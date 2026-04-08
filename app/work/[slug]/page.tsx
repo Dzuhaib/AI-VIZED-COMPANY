@@ -20,10 +20,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${study.company} Case Study`,
     description: `How AIVIZED helped ${study.company} in ${study.industry}. ${study.challenge}`,
+    alternates: { canonical: `https://aivized.com/work/${study.slug}` },
     openGraph: {
       title: `${study.company} — AIVIZED Case Study`,
       description: study.challenge,
       url: `https://aivized.com/work/${study.slug}`,
+      images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: `${study.company} — AIVIZED Case Study` }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${study.company} — AIVIZED Case Study`,
+      description: study.challenge,
+      images: ['/opengraph-image'],
     },
   }
 }

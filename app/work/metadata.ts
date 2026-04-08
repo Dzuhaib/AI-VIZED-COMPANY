@@ -10,12 +10,12 @@ export const metadata: Metadata = {
     description:
       'How we helped a real estate firm book 68% more meetings, a telehealth platform resolve 74% of tickets without humans, and more.',
     url: 'https://aivized.com/work',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'AIVIZED Case Studies' }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'AIVIZED Case Studies' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AIVIZED Case Studies — Results We Are Proud Of',
     description: 'Real AI automation results: 68% more bookings, 74% ticket deflection, and more. See how we did it.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
 }

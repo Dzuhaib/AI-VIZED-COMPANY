@@ -10,12 +10,12 @@ export const metadata: Metadata = {
     description:
       'Four services that solve real business problems: custom AI, automation, voice agents, and chatbots. Human-built for your specific operation.',
     url: 'https://aivized.com/services',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'AIVIZED Services' }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'AIVIZED Services' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AIVIZED Services — AI That Does Actual Work',
     description: 'Custom AI, automation workflows, voice agents, and chatbots built for your business.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
 }

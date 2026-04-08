@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { Plus } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -52,25 +51,29 @@ function FAQRow({ item, index, isOpen, onToggle }: {
         </div>
       </button>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            id={`faq-answer-${index}`}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.32, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="overflow-hidden"
+      {/* CSS grid trick: content always in DOM for SEO, animates via grid-template-rows */}
+      <div
+        id={`faq-answer-${index}`}
+        role="region"
+        aria-labelledby={`faq-btn-${index}`}
+        style={{
+          display: 'grid',
+          gridTemplateRows: isOpen ? '1fr' : '0fr',
+          transition: 'grid-template-rows 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          opacity: isOpen ? 1 : 0,
+          transitionProperty: 'grid-template-rows, opacity',
+          transitionDuration: '0.32s',
+        }}
+      >
+        <div style={{ overflow: 'hidden', minHeight: 0 }}>
+          <p
+            className="font-body text-sm leading-relaxed px-6 pb-5"
+            style={{ color: 'rgba(240,244,255,0.50)' }}
           >
-            <p
-              className="font-body text-sm leading-relaxed px-6 pb-5"
-              style={{ color: 'rgba(240,244,255,0.50)' }}
-            >
-              {item.a}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {item.a}
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
@@ -88,6 +91,16 @@ export default function FAQSection({
   const sectionRef = useRef<HTMLElement>(null)
   const headRef    = useRef<HTMLDivElement>(null)
   const listRef    = useRef<HTMLDivElement>(null)
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  }
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -118,6 +131,11 @@ export default function FAQSection({
       className="relative py-24 px-4 sm:px-6 lg:px-8"
       aria-labelledby="faq-heading"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <div className="max-w-3xl mx-auto">
         <div ref={headRef} className="mb-12 text-center">
           <span className="tag mb-4 inline-flex">FAQ</span>

@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import type { Metadata } from 'next'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Brain, GitBranch, Phone, MessageSquare } from 'lucide-react'

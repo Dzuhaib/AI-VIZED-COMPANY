@@ -76,7 +76,7 @@ export const metadata: Metadata = {
       'We build the intelligence behind your business. AI services, automation workflows, voice agents, and chatbots — done right.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'AIVIZED — AI Services & Automation',
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     title: 'AIVIZED — AI Services, Automation & Voice Agents',
     description:
       'We build the intelligence behind your business. AI services, automation workflows, voice agents, and chatbots.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
   robots: {
     index: true,
