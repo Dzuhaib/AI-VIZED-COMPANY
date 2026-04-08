@@ -524,8 +524,8 @@ export default function ContactPage() {
               color="#a78bfa" index={1} animType="spin"
             />
             <ContactCard
-              icon={Mail} label="Direct email" value="hello@aivized.com"
-              href="mailto:hello@aivized.com"
+              icon={Mail} label="Direct email" value="zuhaibahmed3213951@gmail.com"
+              href="mailto:zuhaibahmed3213951@gmail.com"
               color="#FF6B35" index={2} animType="shake"
             />
 

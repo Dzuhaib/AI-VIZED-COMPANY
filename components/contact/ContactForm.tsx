@@ -116,10 +116,10 @@ export default function ContactForm() {
           We'll be in touch within one business day. If you need something
           urgent, email us directly at{' '}
           <a
-            href="mailto:hello@aivized.com"
+            href="mailto:zuhaibahmed3213951@gmail.com"
             className="text-teal hover:underline"
           >
-            hello@aivized.com
+            zuhaibahmed3213951@gmail.com
           </a>
         </p>
         <button
