@@ -20,6 +20,34 @@ const syne = Syne({
   display: 'swap',
 })
 
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'AIVIZED',
+  url: 'https://aivized.com',
+  logo: 'https://aivized.com/icon.svg',
+  description: 'AIVIZED builds AI services, automation workflows, voice calling agents, and AI chatbots for businesses worldwide.',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    email: 'hello@aivized.com',
+    availableLanguage: 'English',
+  },
+  sameAs: [
+    'https://linkedin.com/company/aivized',
+    'https://x.com/aivized',
+  ],
+  offers: {
+    '@type': 'AggregateOffer',
+    itemOffered: [
+      { '@type': 'Service', name: 'AI Services', description: 'Custom AI model training, predictive analytics, AI-powered search and content generation.' },
+      { '@type': 'Service', name: 'Automation Workflows', description: 'CRM automation, lead routing, invoice flows, and multi-tool integrations.' },
+      { '@type': 'Service', name: 'Voice Calling Agents', description: 'Inbound and outbound AI voice agents for appointment booking, lead qualification and after-hours coverage.' },
+      { '@type': 'Service', name: 'AI Chatbots', description: 'Knowledge-base trained chatbots with human handoff, multi-channel deployment, and analytics.' },
+    ],
+  },
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://aivized.com'),
   title: {
@@ -83,6 +111,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${syne.variable}`}>
       <body className="bg-navy text-soft-white font-body antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <SmoothScroll>
           <Navigation />
           <PageTransition>

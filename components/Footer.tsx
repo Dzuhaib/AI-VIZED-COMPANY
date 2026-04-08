@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import AivizedLogoMark from '@/components/AivizedLogo'
 
 const footerLinks = {
   Company: [
@@ -35,17 +36,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2 mb-4" aria-label="AIVIZED home">
-              <div className="w-8 h-8 rounded-lg bg-teal flex items-center justify-center">
-                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" aria-hidden="true">
-                  <path
-                    d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"
-                    stroke="#0A0E1A"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
+              <AivizedLogoMark size={32} id="footer" />
               <span className="font-heading font-800 text-xl tracking-tight">
                 AI<span className="text-teal">VIZED</span>
               </span>

@@ -35,17 +35,39 @@ export const metadata: Metadata = {
   title: 'AIVIZED — AI Services, Automation & Voice Agents',
   description:
     'AIVIZED builds AI systems, automation workflows, voice calling agents, and chatbots that make your business run smarter — 24 hours a day.',
+  alternates: { canonical: 'https://aivized.com' },
   openGraph: {
     title: 'AIVIZED — AI Services, Automation & Voice Agents',
     description:
       'We build the intelligence behind your business. AI that works while your team focuses on what humans do best.',
     url: 'https://aivized.com',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'AIVIZED — AI Services & Automation' }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AIVIZED — AI Services, Automation & Voice Agents',
+    description: 'We build the intelligence behind your business. AI services, automation, voice agents, and chatbots.',
+    images: ['/og-image.png'],
+  },
+}
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
 }
 
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <HeroSection />
       <ServicesOverview />
       <div className="section-divider" />
