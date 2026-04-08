@@ -15,7 +15,7 @@ const footerLinks = {
   Connect: [
     { label: 'LinkedIn', href: 'https://linkedin.com/company/aivized' },
     { label: 'Twitter / X', href: 'https://x.com/aivized' },
-    { label: 'zuhaibahmed3213951@gmail.com', href: 'mailto:zuhaibahmed3213951@gmail.com' },
+    { label: 'hello@aivized.com', href: 'mailto:hello@aivized.com' },
   ],
 }
 
